@@ -60,6 +60,24 @@ app.delete("/events/:event_id", async (req, res) => {
 })
 
 
+//admin
+app.post("/admin", async (req, res) => {
+    try {
+        const { username, password } = req.body;
+        const result = await pool.query("SELECT * FROM usertable WHERE username=$1",[username]);
+        const dbpassword = result.rows[0].password
+        if(dbpassword == password) {
+            res.json("Success");
+        } else {
+            res.json("Error");
+        }
+    } catch (err) {
+        console.error(err.message);
+    }
+})
+
+
+
 
 
 app.listen(5000, () => {

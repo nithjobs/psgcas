@@ -45,7 +45,7 @@ const EventForm = () => {
                     <input type="text" name="toa" id="toa" value={typeofactivity} onChange={e => setTypeofactivity(e.target.value)} />
                 </label>
 
-                <button onClick={onSubmitForm} >Save</button>
+                <button onClick={onSubmitForm} disabled={printToggler} >Save</button>
                 <button onClick={onPrint} disabled={!printToggler}>Print</button>
                 </form>
             </div>
